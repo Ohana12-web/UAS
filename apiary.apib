@@ -1,80 +1,153 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: localhost/
 
 # UAS
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
-## Questions Collection [/questions]
+## Data - Data Pekerja [/uas]
 
-### List All Questions [GET]
+### Semua List Pekerja [GET/uas/get.php]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+            "Data Pekerjaan": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
+            "id_pekerja": "1",
+            "nama_pekerja": "David",
+            "umur_pekerja": "65",
+            "nama_pekerjaan": "General Manager",
+            "alamat_pekerja": "Jln. Medan"
+        },
+        {
+            "id_pekerja": "10",
+            "nama_pekerja": "",
+            "umur_pekerja": "0",
+            "nama_pekerjaan": "",
+            "alamat_pekerja": ""
+        },
+        {
+            "id_pekerja": "11",
+            "nama_pekerja": "",
+            "umur_pekerja": "0",
+            "nama_pekerjaan": "",
+            "alamat_pekerja": ""
+        },
+        {
+            "id_pekerja": "13",
+            "nama_pekerja": "ordrick",
+            "umur_pekerja": "52",
+            "nama_pekerjaan": "sales manager",
+            "alamat_pekerja": "Jln. gunting"
+        },
+        {
+            "id_pekerja": "14",
+            "nama_pekerja": "ordrick",
+            "umur_pekerja": "21",
+            "nama_pekerjaan": "sales",
+            "alamat_pekerja": "Jln. Hamid"
+        }
                 ]
             }
         ]
 
-### Create a New Question [POST]
+### Membuat data pekerja baru [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+untuk menambah pekerja baru
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+        "Data Pekerjaan": [
+        {
+            "id_pekerja": "ID pekerja",
+            "nama_pekerja": "nama pekerja",
+            "umur_pekerja": "umur pekerja",
+            "nama_pekerjaan": "nama / pangkatan pekerjaan",
+            "alamat_pekerja": "alamat pekerja"
+        }
+        ]
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /uas/post
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+            "Data Pekerjaan": [
+            {
+                "id_pekerja": "",
+                "nama_pekerja": "",
+                "umur_pekerja": "",
+                "nama_pekerjaan": "",
+                "alamat_pekerja": ""
+            },
+            ]
+            }
+            
+### Mengedit data pekerja [PUT]
+
+untuk meng-edit pekerja 
+
++ Request (application/json)
+
+        {
+        "Data Pekerjaan": [
+        {
+            "id_pekerja": "ID pekerja",
+        }
+        ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /uas/put
+
+    + Body
+
+            {
+            "Data Pekerjaan": [
+            {
+                "id_pekerja": "",
+                "nama_pekerja": "",
+                "umur_pekerja": "",
+                "nama_pekerjaan": "",
+                "alamat_pekerja": ""
+            },
+            ]
+            }
+            
+### Menghapus data pekerja [DELETE/uas/delete]
+
+untuk menghapus pekerja 
+
++ Request (application/json)
+
+        {
+        "Data Pekerjaan": [
+        {
+            "id_pekerja": "ID pekerja",
+        }
+        ]
+        }
+        
+        + Response 201 (application/json)
+
+    + Headers
+
+            Location: /uas/delete
+
+    + Body
+
+            {
+            " berhasil terhapus "
+            ]
             }
